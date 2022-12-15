@@ -1,0 +1,201 @@
+
+
+================================================================
+== Vivado HLS Report for 'softmax'
+================================================================
+* Date:           Tue Dec 15 20:11:31 2020
+
+* Version:        2020.1.1 (Build 2951007 on Wed Aug 05 23:24:06 MDT 2020)
+* Project:        myproject_prj
+* Solution:       solution1
+* Product family: virtexuplus
+* Target device:  xcu250-figd2104-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 4.161 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       57|       57| 0.285 us | 0.285 us |   57|   57|   none  |
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +---------------------+----------+---------+---------+----------+----------+-----+-----+---------+
+        |                     |          |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+        |       Instance      |  Module  |   min   |   max   |    min   |    max   | min | max |   Type  |
+        +---------------------+----------+---------+---------+----------+----------+-----+-----+---------+
+        |grp_reduce_2_fu_328  |reduce_2  |       54|       54| 0.270 us | 0.270 us |   54|   54|   none  |
+        +---------------------+----------+---------+---------+----------+----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+------+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM |
++---------------------+---------+-------+---------+---------+------+
+|DSP                  |        -|     10|        -|        -|     -|
+|Expression           |        -|      -|        0|        2|     -|
+|FIFO                 |        -|      -|        -|        -|     -|
+|Instance             |        -|      -|      451|      771|     -|
+|Memory               |        0|      -|      128|       20|     -|
+|Multiplexer          |        -|      -|        -|       36|     -|
+|Register             |        -|      -|      126|        -|     -|
++---------------------+---------+-------+---------+---------+------+
+|Total                |        0|     10|      705|      829|     0|
++---------------------+---------+-------+---------+---------+------+
+|Available SLR        |     1344|   3072|   864000|   432000|   320|
++---------------------+---------+-------+---------+---------+------+
+|Utilization SLR (%)  |        0|   ~0  |    ~0   |    ~0   |     0|
++---------------------+---------+-------+---------+---------+------+
+|Available            |     5376|  12288|  3456000|  1728000|  1280|
++---------------------+---------+-------+---------+---------+------+
+|Utilization (%)      |        0|   ~0  |    ~0   |    ~0   |     0|
++---------------------+---------+-------+---------+---------+------+
+
++ Detail: 
+    * Instance: 
+    +---------------------+----------+---------+-------+-----+-----+-----+
+    |       Instance      |  Module  | BRAM_18K| DSP48E|  FF | LUT | URAM|
+    +---------------------+----------+---------+-------+-----+-----+-----+
+    |grp_reduce_2_fu_328  |reduce_2  |        0|      0|  451|  771|    0|
+    +---------------------+----------+---------+-------+-----+-----+-----+
+    |Total                |          |        0|      0|  451|  771|    0|
+    +---------------------+----------+---------+-------+-----+-----+-----+
+
+    * DSP48E: 
+    +---------------------------+----------------------+-----------+
+    |          Instance         |        Module        | Expression|
+    +---------------------------+----------------------+-----------+
+    |myproject_mul_mulhbi_U256  |myproject_mul_mulhbi  |  i0 * i1  |
+    |myproject_mul_mulhbi_U257  |myproject_mul_mulhbi  |  i0 * i1  |
+    |myproject_mul_mulhbi_U258  |myproject_mul_mulhbi  |  i0 * i1  |
+    |myproject_mul_mulhbi_U259  |myproject_mul_mulhbi  |  i0 * i1  |
+    |myproject_mul_mulhbi_U260  |myproject_mul_mulhbi  |  i0 * i1  |
+    |myproject_mul_mulhbi_U261  |myproject_mul_mulhbi  |  i0 * i1  |
+    |myproject_mul_mulhbi_U262  |myproject_mul_mulhbi  |  i0 * i1  |
+    |myproject_mul_mulhbi_U263  |myproject_mul_mulhbi  |  i0 * i1  |
+    |myproject_mul_mulhbi_U264  |myproject_mul_mulhbi  |  i0 * i1  |
+    |myproject_mul_mulhbi_U265  |myproject_mul_mulhbi  |  i0 * i1  |
+    +---------------------------+----------------------+-----------+
+
+    * Memory: 
+    +-----------------+----------------------+---------+-----+----+-----+------+-----+------+-------------+
+    |      Memory     |        Module        | BRAM_18K|  FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +-----------------+----------------------+---------+-----+----+-----+------+-----+------+-------------+
+    |exp_table1_U     |softmax_exp_table1    |        0|  120|  12|    0|    64|   12|     1|          768|
+    |invert_table2_U  |softmax_invert_tag8j  |        0|    8|   8|    0|    64|    8|     1|          512|
+    +-----------------+----------------------+---------+-----+----+-----+------+-----+------+-------------+
+    |Total            |                      |        0|  128|  20|    0|   128|   20|     2|         1280|
+    +-----------------+----------------------+---------+-----+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+-------+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |ap_block_state1  |    or    |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |Total            |          |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------+----+-----------+-----+-----------+
+    |    Name   | LUT| Input Size| Bits| Total Bits|
+    +-----------+----+-----------+-----+-----------+
+    |ap_NS_fsm  |  27|          5|    1|          5|
+    |ap_done    |   9|          2|    1|          2|
+    +-----------+----+-----------+-----+-----------+
+    |Total      |  36|          7|    2|          7|
+    +-----------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------+----+----+-----+-----------+
+    |               Name               | FF | LUT| Bits| Const Bits|
+    +----------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                         |   4|   0|    4|          0|
+    |ap_done_reg                       |   1|   0|    1|          0|
+    |exp_res_0_V_reg_771               |  12|   0|   12|          0|
+    |exp_res_1_V_reg_777               |  12|   0|   12|          0|
+    |exp_res_2_V_reg_783               |  12|   0|   12|          0|
+    |exp_res_3_V_reg_789               |  12|   0|   12|          0|
+    |exp_res_4_V_reg_795               |  12|   0|   12|          0|
+    |exp_res_5_V_reg_801               |  12|   0|   12|          0|
+    |exp_res_6_V_reg_807               |  12|   0|   12|          0|
+    |exp_res_7_V_reg_813               |  12|   0|   12|          0|
+    |exp_res_8_V_reg_819               |  12|   0|   12|          0|
+    |exp_res_9_V_reg_825               |  12|   0|   12|          0|
+    |grp_reduce_2_fu_328_ap_start_reg  |   1|   0|    1|          0|
+    +----------------------------------+----+----+-----+-----------+
+    |Total                             | 126|   0|  126|          0|
+    +----------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------+-----+-----+------------+---------------+--------------+
+|    RTL Ports   | Dir | Bits|  Protocol  | Source Object |    C Type    |
++----------------+-----+-----+------------+---------------+--------------+
+|ap_clk          |  in |    1| ap_ctrl_hs |    softmax    | return value |
+|ap_rst          |  in |    1| ap_ctrl_hs |    softmax    | return value |
+|ap_start        |  in |    1| ap_ctrl_hs |    softmax    | return value |
+|ap_done         | out |    1| ap_ctrl_hs |    softmax    | return value |
+|ap_continue     |  in |    1| ap_ctrl_hs |    softmax    | return value |
+|ap_idle         | out |    1| ap_ctrl_hs |    softmax    | return value |
+|ap_ready        | out |    1| ap_ctrl_hs |    softmax    | return value |
+|data_0_V_read   |  in |   12|   ap_none  | data_0_V_read |    scalar    |
+|data_1_V_read   |  in |   12|   ap_none  | data_1_V_read |    scalar    |
+|data_2_V_read   |  in |   12|   ap_none  | data_2_V_read |    scalar    |
+|data_3_V_read   |  in |   12|   ap_none  | data_3_V_read |    scalar    |
+|data_4_V_read   |  in |   12|   ap_none  | data_4_V_read |    scalar    |
+|data_5_V_read   |  in |   12|   ap_none  | data_5_V_read |    scalar    |
+|data_6_V_read   |  in |   12|   ap_none  | data_6_V_read |    scalar    |
+|data_7_V_read   |  in |   12|   ap_none  | data_7_V_read |    scalar    |
+|data_8_V_read   |  in |   12|   ap_none  | data_8_V_read |    scalar    |
+|data_9_V_read   |  in |   12|   ap_none  | data_9_V_read |    scalar    |
+|res_0_V         | out |   12|   ap_vld   |    res_0_V    |    pointer   |
+|res_0_V_ap_vld  | out |    1|   ap_vld   |    res_0_V    |    pointer   |
+|res_1_V         | out |   12|   ap_vld   |    res_1_V    |    pointer   |
+|res_1_V_ap_vld  | out |    1|   ap_vld   |    res_1_V    |    pointer   |
+|res_2_V         | out |   12|   ap_vld   |    res_2_V    |    pointer   |
+|res_2_V_ap_vld  | out |    1|   ap_vld   |    res_2_V    |    pointer   |
+|res_3_V         | out |   12|   ap_vld   |    res_3_V    |    pointer   |
+|res_3_V_ap_vld  | out |    1|   ap_vld   |    res_3_V    |    pointer   |
+|res_4_V         | out |   12|   ap_vld   |    res_4_V    |    pointer   |
+|res_4_V_ap_vld  | out |    1|   ap_vld   |    res_4_V    |    pointer   |
+|res_5_V         | out |   12|   ap_vld   |    res_5_V    |    pointer   |
+|res_5_V_ap_vld  | out |    1|   ap_vld   |    res_5_V    |    pointer   |
+|res_6_V         | out |   12|   ap_vld   |    res_6_V    |    pointer   |
+|res_6_V_ap_vld  | out |    1|   ap_vld   |    res_6_V    |    pointer   |
+|res_7_V         | out |   12|   ap_vld   |    res_7_V    |    pointer   |
+|res_7_V_ap_vld  | out |    1|   ap_vld   |    res_7_V    |    pointer   |
+|res_8_V         | out |   12|   ap_vld   |    res_8_V    |    pointer   |
+|res_8_V_ap_vld  | out |    1|   ap_vld   |    res_8_V    |    pointer   |
+|res_9_V         | out |   12|   ap_vld   |    res_9_V    |    pointer   |
+|res_9_V_ap_vld  | out |    1|   ap_vld   |    res_9_V    |    pointer   |
++----------------+-----+-----+------------+---------------+--------------+
+
